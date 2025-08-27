@@ -33,7 +33,7 @@ public class Book {
         return this.publicationDate;
     }
 
-    protected int isbn() {
+    protected int getIsbn() {
         return this.isbn;
     }
 }

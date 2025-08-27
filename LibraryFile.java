@@ -20,7 +20,10 @@ class LibraryFile {
         try {
             FileWriter writer = new FileWriter(csvFileName, true);
             for (Book book : books) {
-                writer.
+                writer.write(book.getAuthor() + "," +
+                              book.getTitle() + "," +
+                              book.getPD() + "," +
+                              book.getIsbn() + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
