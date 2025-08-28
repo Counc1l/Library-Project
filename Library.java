@@ -18,7 +18,7 @@ public class Library {
         this.list.add(book);
     }
 
-    public void saveBooks() throws IOException {
+    public void saveBooks() {
         this.libraryFile.saveBooks(this.list);
     }
 
