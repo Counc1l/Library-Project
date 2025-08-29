@@ -2,12 +2,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 class LibraryFile {
-    private String csvFileName;
+    private final String csvFileName;
 
     LibraryFile(String fileName) {
         this.csvFileName = fileName;
         try {
-            new File(csvFileName).createNewFile();
+            if (new File(csvFileName).createNewFile()) {
+                FileWriter writer = new FileWriter(csvFileName);
+                writer.write("Title,Author,Year,ISBN,Available");
+                writer.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -17,19 +21,17 @@ class LibraryFile {
         return csvFileName;
     }
 
+    // Saves all books in the Arraylist into CSV for permanent storage
     protected void saveBooks(ArrayList<Book> books) {
-        for (Book book : books) {
-            bookToCsv(book);
-        }
-    }
-
-    private void bookToCsv(Book book) {
         try {
             FileWriter writer = new FileWriter(csvFileName, true);
-            writer.append(book.getTitle() + "," +
-                    book.getAuthor() + "," +
-                    book.getPD() + "," +
-                    book.getIsbn() + "\n");
+            for (Book book : books) {
+                writer.append(book.getTitle() + "," +
+                        book.getAuthor() + "," +
+                        book.getPD() + "," +
+                        book.getIsbn() + "," +
+                        book.isAvailable() + "\n");
+            }
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

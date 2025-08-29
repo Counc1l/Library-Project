@@ -1,11 +1,11 @@
 public class Book {
     private String title;
     private String author;
-    private int publicationDate;
-    private int isbn;
+    private String publicationDate;
+    private String isbn;
     private boolean available;
 
-    public Book(String title, String author, int pD, int isbn, boolean avail) {
+    public Book(String title, String author, String pD, String isbn, boolean avail) {
         this.title = title;
         this.author = author;
         this.publicationDate = pD;
@@ -17,10 +17,7 @@ public class Book {
         this.available = !available;
     }
 
-    protected boolean isAvailable() {
-        return available;
-    }
-
+    //Getters
     protected String getTitle() {
         return this.title;
     }
@@ -29,12 +26,22 @@ public class Book {
         return this.author;
     }
 
-    protected int getPD() {
+    protected String getPD() {
         return this.publicationDate;
     }
 
-    protected int getIsbn() {
+    protected String getIsbn() {
         return this.isbn;
+    }
+
+    protected boolean isAvailable() {
+        return this.available;
+    }
+
+    protected void printBook() {
+        System.out.println("Title: " + this.title +
+                            " | Author: " + this.author +
+                            " | Status: " + this.available);
     }
 }
 

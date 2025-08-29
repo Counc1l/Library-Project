@@ -14,6 +14,21 @@ public class Library {
         loadBooks();
     }
 
+    private void loadBooks() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(libraryFile.getCsvFileName()));
+            reader.readLine(); //Skips Header Row - WIP
+            String[] split;
+            while (reader.ready()) {
+                split = reader.readLine().split(",");
+                Book book = new Book(split[0], split[1], split[2], split[3], Boolean.parseBoolean(split[4]));
+                list.add(book);
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addBook(Book book) {
         this.list.add(book);
     }
@@ -37,17 +52,9 @@ public class Library {
         }
     }
 
-    private void loadBooks() {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(libraryFile.getCsvFileName()));
-            String[] split;
-            while (reader.ready()) {
-                split = reader.readLine().split(",");
-                Book book = new Book(split[0], split[1], Integer.parseInt(split[2]), Integer.parseInt(split[3]), true);
-                list.add(book);
-            }
-        } catch(IOException e) {
-            e.printStackTrace();
+    public void displayBooks() {
+        for (Book book : list) {
+            book.printBook();
         }
     }
 }
