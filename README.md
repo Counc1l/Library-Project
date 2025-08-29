@@ -5,6 +5,7 @@ Completed Goals:
 
 Current Goals (in order):
 - Ensure full functionality with ArrayList and basic features
+- Interfaces?
 - Create basic error prevention measures
 - Clean up code and look for simple efficiency increase (either in speed or by removing duplicate code)
 - Create a simple GUI and move program to a website
